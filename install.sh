@@ -23,7 +23,7 @@ set -e
 # [STEP 1] - DETECTAR OS
 detect_os(){
   local kernel
-  kernel = '$(uname -s)'
+  kernel="$(uname -s)"
 
   case "$kernel" in
     Darwin)
@@ -35,8 +35,7 @@ detect_os(){
     *)
     echo "Você está utilizando o Ruindows"
     exit -1
-    esac
-
+  esac
 }
 
 detect_os
