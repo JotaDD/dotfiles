@@ -1,0 +1,35 @@
+# macOS / Finder
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+Dockerfile
+todo.md
+
+# Editor / temp files
+*~
+*.swp
+*.swo
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+
+# Logs
+*.log
+
+# Local secrets/env
+.env
+.env.*
+*.local
+*.secret
+*.secrets
+*.key
+*.pem
+*.p12
+
+# Caches / runtime
+.cache/
+tmp/
