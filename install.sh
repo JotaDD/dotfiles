@@ -19,23 +19,41 @@ set -e
 # - NÃO apagar arquivos do usuário sem confirmação.
 # - Sempre fazer backup antes de sobrescrever configs existentes.
 
-
 # [STEP 1] - DETECTAR OS
-detect_os(){
-  local kernel
-  kernel="$(uname -s)"
 
-  case "$kernel" in
-    Darwin)
-    echo "macOS"
-    ;;
-    Linux)
-    echo "Você usa Linux"
-    ;;
-    *)
-    echo "Você está utilizando o Ruindows"
-    exit -1
-  esac
+detect_distro() {
+	local distro
+
+	if [[ -r /etc/release ]]; then
+		. /etc/os-release
+		distro="${ID:-linux}"
+		echo "DIIISTRO"
+		echo "$distro"
+	fi
+
+}
+
+detect_os() {
+	local kernel
+	kernel="$(uname -s)"
+
+	case "$kernel" in
+	Darwin)
+		echo "macOS"
+		;;
+	Linux)
+		echo "Você usa Linux"
+		if [[ -r /etc/os-release ]]; then
+			. /etc/os-release
+		fi
+
+		;;
+	*)
+		echo "Você está utilizando o Ruindows"
+		exit -1
+		;;
+	esac
 }
 
 detect_os
+detect_distro
